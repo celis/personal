@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hep Recommender | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Hep Recommender" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A recommender system for scientific articles in the field of High Energy Physics." />
+<meta property="og:description" content="A recommender system for scientific articles in the field of High Energy Physics." />
+<link rel="canonical" href="https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html" />
+<meta property="og:url" content="https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://celis.github.io/personal/images/markov.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"A recommender system for scientific articles in the field of High Energy Physics.","@type":"BlogPosting","headline":"Hep Recommender","url":"https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html","datePublished":"2020-02-20T00:00:00-06:00","dateModified":"2020-02-20T00:00:00-06:00","image":"https://celis.github.io/personal/images/markov.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/personal/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://celis.github.io/personal/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/personal/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Hep Recommender | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Hep Recommender" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A recommender system for scientific articles in the field of High Energy Physics." />
+<meta property="og:description" content="A recommender system for scientific articles in the field of High Energy Physics." />
+<link rel="canonical" href="https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html" />
+<meta property="og:url" content="https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://celis.github.io/personal/images/markov.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-20T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"A recommender system for scientific articles in the field of High Energy Physics.","@type":"BlogPosting","headline":"Hep Recommender","url":"https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html","datePublished":"2020-02-20T00:00:00-06:00","dateModified":"2020-02-20T00:00:00-06:00","image":"https://celis.github.io/personal/images/markov.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://celis.github.io/personal/jupyter/2020/02/20/hep-recommender.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://celis.github.io/personal/feed.xml" title="fastpages" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/personal/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/personal/about/">About Me</a><a class="page-link" href="/personal/search/">Search</a><a class="page-link" href="/personal/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Hep Recommender</h1><p class="page-description">A recommender system for scientific articles in the field of High Energy Physics.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-02-20T00:00:00-06:00" itemprop="datePublished">
+        Feb 20, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      11 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/personal/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/celis/personal/tree/master/_notebooks/2020-02-20-hep-recommender.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/personal/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/celis/personal/master?filepath=_notebooks%2F2020-02-20-hep-recommender.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/personal/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/celis/personal/blob/master/_notebooks/2020-02-20-hep-recommender.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/personal/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Introduction">Introduction </a></li>
+<li class="toc-entry toc-h1"><a href="#Related-work">Related work </a></li>
+<li class="toc-entry toc-h1"><a href="#Distributed-representation-on-co-citations">Distributed representation on co-citations </a></li>
+<li class="toc-entry toc-h1"><a href="#Data">Data </a></li>
+<li class="toc-entry toc-h1"><a href="#Recommendations">Recommendations </a></li>
+<li class="toc-entry toc-h1"><a href="#Web-application">Web application </a></li>
+<li class="toc-entry toc-h1"><a href="#Discussion">Discussion </a></li>
+<li class="toc-entry toc-h1"><a href="#References">References </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-02-20-hep-recommender.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
+</h1>
+<p>In this note I want to discuss <a href="https://www.hep-recommender.com">hep-recommender</a>, a recommender system for scientific papers in the field of High Energy Physics (HEP) aimed to help researchers in the exploration of relevant literature.  This is a personal project I have been working recently in collaboration with <a href="https://github.com/JoseEliel">José Eliel Camargo Molina</a>.    A <a href="https://devpost.com/software/hep-recommender">submission</a> of this project to the <a href="https://fbai1.devpost.com">Facebook Artificial Intelligence Hackathon (2020)</a> won the third place.</p>
+<p>There are different approaches to determine the degree of similarity between articles in order to identify related work. Some works have used text-mining and natural language processing methods. Another popular approach is based on citation analysis, where the similarity between two articles is estimated based on bibliographic information [1,2,4,5]. Finally, other works have used a combination of the previous approaches, see for instance [3].</p>
+<p>In this project, we develop a recommender system based on citation analysis. More specifically, we will develop a recommender system that elaborates on the ideas of co-citation analysis [1,4] and co-citation proximity analysis (CPA) [2]. Co-citation analysis is based on the premise that articles which are frequently cited together (by the same papers) should be related to each other. CPA extends this idea by incorporating the notion that the closer the citations are to each other within the article text, the more likely it is that they are related. While these methods are relatively simple they provide a high quality of related article recommendations.   Our recommender system relies on a distributed representation of articles obtained by training a Skip-Gram model on reference lists.  This model also captures the notion that articles cited close to each other on the text are similar.</p>
+<p>In this note I want to go to some detail about the model powering our recommender system, how it compares to other approaches, and how we made it available via a web application.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Related-work">
+<a class="anchor" href="#Related-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>Related work<a class="anchor-link" href="#Related-work"> </a>
+</h1>
+<p>I would like to start discussing some of the standard methods in the literature to quantify the similarity between two articles.  I will define the following concepts:</p>
+<ul>
+<li>
+<p>bibliometric coupling</p>
+</li>
+<li>
+<p>co-citation count</p>
+</li>
+<li>
+<p>co-citation proximity analysis (CPA)</p>
+</li>
+</ul>
+<p>Bibliometric couplign reflects the idea that two papers sharing a large portion of their references should be similar [5].  Co-citation count assigns a high degree of similarity to articles which are frequenly cited together (regardless of where the citations occcured within the text) [1].   CPA extends co-citation count by assigning more weigth to cases where the articles are cited close to each other within the text [2].  In general CPA is expected to give better results than co-citation count, though it requires some work in order to parse the references of each article keeping information about the location of the references within the text.</p>
+<p>Lets formalize these concepts.  We consider a set of papers $\{  \omega_1, \omega_2, \ldots \omega_n  \}$. We define the quantities $c_{i,j}$, where $c_{i,j}=1$ if $\omega_i$ is cited by $\omega_j$ and $c_{i,j}=0$ otherwise.  Then we are ready to introduce our three measures of similarity:</p>
+<ul>
+<li>bibliographic coupling is defined as $\sum_{k=1}^{n}   c_{k,i}   c_{k,j}$</li>
+</ul>
+<ul>
+<li>co-citation count is defined as $\sum_{k=1}^{n}   c_{i,k}   c_{j,k}$</li>
+</ul>
+<ul>
+<li>CPA can be used to define a measure $\sum_{k=1}^{n} \eta_{i,j}^{k}  c_{i,k}   c_{j,k}$, where $n_{ij}^{k}$ are coefficients that penalize cases where the citations occur far from each other within the text.    </li>
+</ul>
+<p>In the original CPA article [2], $\eta$ was fixed to $1$ if the citations occur in the same sentence, $1/2$ if they only occur in the same paragraph, $1/4$ if they only occur in the same chapter, and $1/8$ if they only appear on the same article. Parametric representations of $\eta$ have also been proposed [7].</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Distributed-representation-on-co-citations">
+<a class="anchor" href="#Distributed-representation-on-co-citations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distributed representation on co-citations<a class="anchor-link" href="#Distributed-representation-on-co-citations"> </a>
+</h1>
+<p>We propose a model that relies on the same idea behind CPA, namely, that the proximity of references within an article provide valuable information regarding the similarity of two articles.    However, we wanted to simplify the process of extracting the necessary data as much as possible.</p>
+<p>We assume that it is possible to extract the list of references of each article in the order of appearance within the text. For instance the following article</p>
+<blockquote>
+<p>Higgs boson pair production in gluon fusion is the most promising process to find out whether the Higgs boson self-coupling is Standard-Model-like. Early studies of Higgs boson pair production within an EFT framework can be found in Refs. [1–3]. Many phenomenological investigations about the potential of this process to reveal New Physics have been performed since, see e.g. Refs. [4–8]...</p>
+</blockquote>
+<p>would give rise to a reference list [1,2,3,4,5,6,7,8,...].   In this way, articles which are frequently close to each other on these reference lists should be very similar, as the community is citing them close to each other within the text of the articles.</p>
+<p>We will use an approach that has proven to be very fruitful in Natural Language Processing (NLP).  We will take the lists of references and train a Skip-Gram model, such that articles which tend to be cited close to each other will have similar embeddings.</p>
+<p>Our dataset consists of ordered lists of references.  Suppose we have a total of $n$ unique articles in our dataset and for each of these articles we have its reference list.  The Skip-gram model maximizes the following objective function:\begin{align}\frac{1}{n} \sum_{q=1}^{n}    \left[  \frac{1}{n_q}   \sum_{i=1}^{n_q}  \sum_{ -c \leq j  \leq c ,\, j\neq 0  } \log p(w_{i+j}^{q}| w_i^{q}) \right]
+\end{align}</p>
+<p>Here $\omega_{i}^{q}$ represents the embedding of the $i$-th article appearing on the reference list of article $q$; $n_q$ represents the size of the reference list for article $q$, and $c$ represents the context-window size of the Skip-Gram model.  The probability is modelled using  a softmax function</p>
+\begin{align}
+p(    \omega_{i}  |    \omega_j  )   = \frac{   \exp(   \omega_{i} \cdot \omega_{j}  )}{     \sum_{l=1}^{n}   \exp(   \omega_{l}  \cdot \omega_j   )   }
+\end{align}<p>Just like in the Skip-Gram model used in NLP, in order to make the model training more efficient we need to implement negative sampling or hierarchical softmax.      A good implementation of the Skip-Gram model is provided by the <a href="https://radimrehurek.com/gensim/auto_examples/index.html">Gensim</a> library for instance.</p>
+<p>In order to explore the structure of the trained embeddings, I took a sample of articles and made a t-SNE visualization of their embeddings in two dimensions:</p>
+<p><figure>
+  
+    <img class="docimage" src="/personal/images/copied_from_nb/../images/tsne.png" alt="" style="max-width: 400px">
+    
+    
+</figure>
+</p>
+<p>For this, I picked a set of articles that were published on the <a href="https://arxiv.org">arXiv</a>.  Each arXiv category was displayed with a different color.  On this plot, some of the arXiv categories that appear are: astro-ph (red), hep-ex (blue), hep-th (black) and hep-ph (green), among others.  As expected, the embeddings form cluster around their categories.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data">
+<a class="anchor" href="#Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data<a class="anchor-link" href="#Data"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Regarding open acces digital libraries, the research community in the field of High Energy Physics mainly uses the <a href="https://inspirehep.net">INSPIRE-HEP</a> and the <a href="https://arxiv.org">arXiv</a>. INSPIRE-HEP provides an API from which data for articles in the field of HEP can be retrieved, we use this API to extract the data we need.  Below I show some exploratory example.  Lets first define some classes that talk to the API and handle the response.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+
+<span class="k">class</span> <span class="nc">InspireAPI</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Simple wrapper class around the INSPIRE API</span>
+
+<span class="sd">    https://inspirehep.net</span>
+
+<span class="sd">    methods:</span>
+<span class="sd">       literature: gives access to the literature endpoint</span>
+<span class="sd">    """</span>
+
+    <span class="n">LITERATURE</span> <span class="o">=</span> <span class="s2">"https://inspirehep.net/api/literature/"</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">literature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns api response for a given record_id</span>
+<span class="sd">        """</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">LITERATURE</span> <span class="o">+</span> <span class="n">record_id</span>
+        <span class="k">return</span> <span class="n">LiteratureRecord</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">LiteratureRecord</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Datamodel class for handling literature record data,</span>
+<span class="sd">    implementing basic methods to access the properties</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        
+    <span class="nd">@property</span> 
+    <span class="k">def</span> <span class="nf">record_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns the INSPIRE id of the article</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns article metadata</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">references</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns reference list of the article as a List of INSPIRE article ids</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"references"</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="n">element</span><span class="p">[</span><span class="s2">"record"</span><span class="p">][</span><span class="s2">"$ref"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"references"</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"record"</span><span class="p">)</span>
+            <span class="p">]</span>    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now look at one example. All the bibliographic data is contained on the <em>metadata</em> property of our LiteratureRecord class.  I implemented a <em>references</em> property in order to retrieve the list of references (only the article identifiers).   Lets extract data for the article with the identifier <a href="https://labs.inspirehep.net/literature/11883">'11883'</a>,</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspireapi</span> <span class="o">=</span> <span class="n">InspireAPI</span><span class="p">()</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">inspireapi</span><span class="o">.</span><span class="n">literature</span><span class="p">(</span><span class="s1">'11883'</span><span class="p">)</span>
+
+<span class="n">record</span><span class="o">.</span><span class="n">references</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>['40440',
+ '12289',
+ '12290',
+ '14006',
+ '12291',
+ '12288',
+ '9159',
+ '43800',
+ '43801']</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this way we are able to extract the lists of references we need for our model.  Note that the INSPIRE-API returns references in the order of appearance on the reference section of the article, and by tradition, the HEP community orders references by the order of appearance on the text.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Recommendations">
+<a class="anchor" href="#Recommendations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recommendations<a class="anchor-link" href="#Recommendations"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the Skip-Gram model embeddings and some metric on the vector space to provide recommendations for articles with at least some citations.  Very recent articles or unpopular articles with no citations will not have embeddings and we must find other method to provide recommendations for these articles.   For this reason, we consider two scenarios when we want to provide recommendations for a given article:</p>
+<p><em>i)</em> The article has embeddings produced by our Skip-Gram model.</p>
+<p><em>ii)</em> The article has no embeddings from the Skip-Gram model.</p>
+<p>In case <em>i)</em> we retrieve the top similar articles using cosine similarity as the metric.  Cosine similarity is defined as $\cos \theta_{12} = \hat \omega_{1} \cdot \hat \omega_{2}$, where $\hat \omega = \omega/|\omega|$ is a unit norm vector.   In this case we retrieve as recommendations the articles whose embedding have a smaller angle difference with the original article.</p>
+<p>In case <em>ii)</em>, we dont have an embedding but we can build one out of the references of the article.  We retrieve the references of the article by calling the INSPIRE-HEP api and then take the average vector $\omega_{\rm{avg}}^q =  1/n_q \sum_{i=1}^{n_q} \omega_i^{q}$ of the references. We can then proceed to retrieve the top similar articles using cosine similarity as before.</p>
+<p>These two simple methods are able to provide recommendations for most articles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Web-application">
+<a class="anchor" href="#Web-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web application<a class="anchor-link" href="#Web-application"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The recommender system has been made available at <a href="https://www.hep-recommender.com">hep-recommender</a>.   It is a Flask web application
+currently hosted on Heroku with a gunicorn server. Storage of the model artifacts is done in AWS S3.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Discussion">
+<a class="anchor" href="#Discussion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discussion<a class="anchor-link" href="#Discussion"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To see one example of the application, we can look the recommendations of similar articles for:</p>
+<p><a href="https://labs.inspirehep.net/literature/11883">"Broken Symmetries and the Masses of Gauge Bosons"</a> by Higgs, Peter W. (1964).</p>
+<p>This article is one of the works behind the 2013 Physics nobel prize for the theoretical development of the so-called Higgs mechanism.  The recommendations from our system are very good, including the other articles which were also responsible for these theoretical developments as aknowledged by the community.</p>
+<p>Another interesting example is this one</p>
+<p><a href="http://www.hep-recommender.com/?article=4510">"Unitary Symmetry and Leptonic Decays"</a> by Cabibbo, Nicola (1963)</p>
+<p>This article introduced the idea of quark mixing when only two quark generations were known.  The recommendations include the article</p>
+<p><a href="https://labs.inspirehep.net/literature/81350">"CP Violation in the Renormalizable Theory of Weak Interaction"</a> by Kobayashi, Makoto; Maskawa, Toshihide (1973)</p>
+<p>which extends the idea of Cabibbo to three quark generations and gave rise to what is now known as the CKM matrix.</p>
+<p>Exploring a large set of articles I was surprised by the high quality of the recommendations.  Several experts on the field of HEP have also been using the application and find the recommendations satisfactory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="References">
+<a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://www.semanticscholar.org/paper/Co-citation-in-the-scientific-literature%3A-A-new-of-Small/da30b84925764b550b55c7d00596f8f1b9608fe2">[1]</a> H. Small, “Co-citation in the scientific literature: A new measure of the relationship between two documents” Journal of the American Society for Information Science, vol. 24, no. 4, pp. 265–269, 1973.</p>
+<p><a href="https://www.semanticscholar.org/paper/Citation-Proximity-Analysis-%28CPA%28-%3A-A-New-Approach-Gipp-Beel/22b519fcf4b623bef5cd702f2e1c995640d4c833">[2]</a> B. Gipp and J. Beel, “Citation proximity analysis (cpa) : A new approach for identifying related work based on co-citation analysis” in Proceedings of the 12th International Confer- ence on Scientometrics and Informetrics, vol. 1 (B. Larsen, ed.), (Sao Paulo), pp. 571–575, BIREME/PANO/WHO, 2009.</p>
+<p><a href="https://www.semanticscholar.org/paper/A-Scalable-Hybrid-Research-Paper-Recommender-System-Kanakia-Shen/bb246e08bc6641672c2bb2b93d4214eccf3f84b6">[3]</a> A. Kanakia, Z. Shen, D. Eide, and K. Wang, “A scalable hybrid research paper recommender system for microsoft academic” CoRR, vol. abs/1905.08880, 2019.</p>
+<p><a href="https://www.semanticscholar.org/paper/System-of-Document-Connections-Based-on-References-Marshakova-shaikevich/2d871489eb7288dd1bec4be99bc363efd4933d48">[4]</a> I. V. Marshakova-shaikevich, “System of document connections based on references” 2009.</p>
+<p><a href="https://www.semanticscholar.org/paper/Bibliographic-coupling-between-scientific-papers-Kessler/68300052245f0f3aed1a4d65943e436cf1227242">[5]</a> M. M. Kessler, “Bibliographic coupling between scientific papers” American Documentation, vol. 14, no. 1, pp. 10–25, 1963.</p>
+<p><a href="https://www.semanticscholar.org/paper/Efficient-Estimation-of-Word-Representations-in-Mikolov-Chen/330da625c15427c6e42ccfa3b747fb29e5835bf0">[6]</a> T. Mikolov, K. Chen, G. S. Corrado, and J. Dean, “Efficient estimation of word representations in vector space” CoRR, vol. abs/1301.3781, 2013.</p>
+<p><a href="https://www.semanticscholar.org/paper/Evaluating-link-based-recommendations-for-Wikipedia-Schwarzer-Schubotz/7c72a2008f94078ce50ac251c6437038bbcf0185">[7]</a> M. Schwarzer, M. Schubotz, N. Meuschke, C. Breitinger, V. Markl, and B. Gipp, “Evaluating link-based recommendations for wikipedia” 2016 IEEE/ACM Joint Conference on Digital Libraries (JCDL), pp. 191–200, 2016.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="celis/personal"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/personal/jupyter/2020/02/20/hep-recommender.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/personal/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/personal/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/personal/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/personal/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/personal/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
