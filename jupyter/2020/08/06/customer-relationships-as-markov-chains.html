@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -184,8 +184,14 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>On this note I want to explore the work presented in the article <a href="http://web.stanford.edu/class/msande121/Links/crmmodelingmarkov.pdf">"Modelling customer relationships as Markov Chains" from P. E. Pfeifer and R. L. Carraway (2000)</a>.</p>
-<p>First, lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again. These campaings could be physical brochures that are delivered to the customers for instance.</p>
-<p>As the famous quote says "Half the money I spend on advertising is wasted; the trouble is I don't know which half." (John Wanamake). The purpose of the work analized here is to model the customer purchasing behavior in the scenario depicted above, with the objective of optimizing the marketing spend of the business.</p>
+<p>Lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again.</p>
+<p>As the famous quote says "Half the money I spend on advertising is wasted; the trouble is I don't know which half." (John Wanamake). The purpose of the work analized here is to model the customer purchasing behavior in the scenario depicted above, with the objective of optimizing the direct marketing spend of the business.</p>
+<p>The authors start by presenting a simple toy scenario to illustrate their ideas.    I will present in the following this simple scenario, though with some modifications that I think will help to make things more concrete.</p>
+<p>Consider a shop that sells one product at a price $NC$ (in the notation of the authors, $NC$ is the net contribution to the company profits).    Assume for simplicity that customers cannot buy more than one unit per month from this shop.     Every month the company will spend $M$ in marketing for each customer unless its last purchase was 5 months ago or longer.</p>
+<p>Now, we have a new customer that purchases in january.   In february we will say that this customer has a recency $r=1$, as one month as passed.  On march, he will continue having recency $r=1$ if he bought again in february, otherwise he will have recency $r=2$.  If the customer has not bought anything by june, he will have recency $r=5$ by then and we will declare him inactive at that point.    We do this because on this example, the shop observed that customers with recency equal or larger than 5 never come back to buy again.</p>
+<p>This idea of the recency is very simple and we will use it to describe the so-called customer state.     In the toy scenario we analyze, we will assume that the probability that a customer will purchase in a given month only depends on its recency (its state).     Direct marketers have observed that recency plays a very important role in determining the probability that a customer will purchase again, so though we analyze a very simplified scenario it is not pointless.</p>
+<p>The system we are describing is very special, in the sense that the next state of the customer is determined only by its previous state.  For instance, a customer with recency $r=3$ can either purchase again or not.  The probability he purchases again in that month only depends on its recency.   If he purchases again his next state is $r=1$, else his next state is $r=4$. This is what people calls the Markov property.</p>
+<p>If we draw this system as a diagram it would look like this</p>
 <p><figure>
   
     <img class="docimage" src="/personal/images/copied_from_nb/../images/markov.png" alt="" style="max-width: 500px">
@@ -193,6 +199,7 @@ window.onload = wrap_img;
     
 </figure>
 </p>
+<p>The arrows represent the possible paths and $p_r$ represents the probability that a customer with recency $r$ will purchase again.   In matrix form, the previous diagram canbe written as</p>
 
 </div>
 </div>
@@ -236,14 +243,6 @@ NC - M \\
 \begin{equation*}
 \mathrm{LV} = \lim_{T \to \infty}\sum_{t=0}^{T} [(1+d)^{-1} \mathbf{P} ]^t \, R 
 \end{equation*}
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>NC net contribution</p>
-
 </div>
 </div>
 </div>
