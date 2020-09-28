@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      7 min read
     
 </span></p>
 
@@ -207,7 +207,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Customer Lifetime Value, which we will be referring to as Lifetime Value (LV), is a very important concept for marketing.    LV is a <strong>prediction</strong> of the profit attributed to the <strong>future</strong> relationship with a customer.</p>
 <p>This short definition tells us that LV is the expected future profit from a customer relationship and as such it needs to be a prediction, in other words it will depend on some model and assumptions.  Being a forward looking metric, its useful as it allows managers to focus on customer that will be more profitable in the long term.  LV can also be regarded as an upper limit on the cost-per-acquisition of new customers.</p>
-<p>Other definitions mention that LV represents the present value of the projected future cash flows, and by this they are taking into account the time-value of money.</p>
+<p>Other definitions mention that LV represents the present value of the projected future cash flows attributed to a customer relationship, and by this they are taking into account the time-value of money.</p>
 
 </div>
 </div>
@@ -218,6 +218,24 @@ window.onload = wrap_img;
 <h1 id="Markov-Chains">
 <a class="anchor" href="#Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markov Chains<a class="anchor-link" href="#Markov-Chains"> </a>
 </h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When we observe a sequence of chance experiments, the probabilities for the outcomes of the next experiment can depend in general on all of the past outcomes.    For example this is the case when predicting the results of a series of horse races.    Here we focus on a special class of processes that present a simpler dependence between experiments.    Processes for which the outcome of a given experiment can only affect the outcome of the next experiment are known as Markov Chains.  This naming comes from A. A. Markov, who studied the mathematical properties of these processes.  An introduction to Markov Chains can be found on this book for example <em>Grinstead and Snell’s Introduction to Probability</em>.</p>
+<p>We specify a Markov Chain in terms of a set of states $S = \{s_1, s_2, \ldots s_n\}$.  The system will move among this states in discrete steps.   When the chain is in the state $s_i$, it will move to the state $s_j$ at the next step with a probability $p_{ij}$. We call $p_{ij}$ transition probabilities and they can be written in matrix form.</p>
+<p>Markov chains are also depicted usually in terms of a diagram, below we show a simple Markov chain</p>
+<p><figure>
+  
+    <img class="docimage" src="/personal/images/copied_from_nb/../images/lily.png" alt="" style="max-width: 500px">
+    
+    
+</figure>
+</p>
+<p>The frog can be in two states (left lily or right lily) and the numbers depict the associated transition probabilities.</p>
+
 </div>
 </div>
 </div>
