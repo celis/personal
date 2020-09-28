@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -152,8 +152,8 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h1"><a href="# Introduction"> Introduction </a></li>
 <li class="toc-entry toc-h1"><a href="#Customer-Lifetime-Value">Customer Lifetime Value </a></li>
-<li class="toc-entry toc-h1"><a href="# Markov-Chains"> Markov Chains </a></li>
-<li class="toc-entry toc-h1"><a href="# Toy-model"> Toy model </a></li>
+<li class="toc-entry toc-h1"><a href="#Markov-Chains">Markov Chains </a></li>
+<li class="toc-entry toc-h1"><a href="#Toy-model">Toy model </a></li>
 <li class="toc-entry toc-h1"><a href="# General-Formulation"> General Formulation </a></li>
 <li class="toc-entry toc-h1"><a href="# Example"> Example </a></li>
 </ul><!--
@@ -187,8 +187,8 @@ window.onload = wrap_img;
 <p>On this note I want to explore the work presented in the article <a href="http://web.stanford.edu/class/msande121/Links/crmmodelingmarkov.pdf">"Modelling customer relationships as Markov Chains" from P. E. Pfeifer and R. L. Carraway (2000)</a>.</p>
 <p>Lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again.</p>
 <p>As the famous quote says "Half the money I spend on advertising is wasted; the trouble is I don't know which half." (John Wanamake). The purpose of the work analized here is to model the customer purchasing behavior in the scenario depicted above, with the objective of optimizing the direct marketing spend of the business.</p>
-<p>The authors start by presenting a simple toy scenario to illustrate their ideas.    I will present below this simple scenario, with some modifications to make things more concrete.   Before doing this, I will like to introduce briefly two concepts that we will be using: Customer Lifetime Value and Markov Chains.</p>
-<p>After presenting the toy model, we will discuss a general formulation of the model and we will discuss with a more realistic example.</p>
+<p>The authors start by presenting a simple toy scenario to illustrate their ideas.    I will present below this simple scenario, with some modifications to make things more concrete.   But before doing this, I will like to introduce briefly two concepts that we will be using: Customer Lifetime Value and Markov Chains.</p>
+<p>After presenting the toy model, we will discuss a general formulation of the model and then we will look at a more realistic application.</p>
 
 </div>
 </div>
@@ -205,8 +205,18 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id=" Markov-Chains">
-<a class="anchor" href="#%C2%A0Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a> Markov Chains<a class="anchor-link" href="#%C2%A0Markov-Chains"> </a>
+<p>Customer Lifetime Value, which we will be referring to as Lifetime Value (LV), is a very important concept for marketing.    LV is a <strong>prediction</strong> of the profit attributed to the <strong>future</strong> relationship with a customer.</p>
+<p>This short definition tells us that LV is the expected future profit from a customer relationship and as such it needs to be a prediction, in other words it will depend on some model and assumptions.  Being a forward looking metric, its useful as it allows managers to focus on customer that will be more profitable in the long term.  LV can also be regarded as an upper limit on the cost-per-acquisition of new customers.</p>
+<p>Other definitions mention that LV represents the present value of the projected future cash flows, and by this they are taking into account the time-value of money.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Markov-Chains">
+<a class="anchor" href="#Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markov Chains<a class="anchor-link" href="#Markov-Chains"> </a>
 </h1>
 </div>
 </div>
@@ -214,8 +224,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id=" Toy-model">
-<a class="anchor" href="#%C2%A0Toy-model" aria-hidden="true"><span class="octicon octicon-link"></span></a> Toy model<a class="anchor-link" href="#%C2%A0Toy-model"> </a>
+<h1 id="Toy-model">
+<a class="anchor" href="#Toy-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Toy model<a class="anchor-link" href="#Toy-model"> </a>
 </h1>
 <p>Consider a shop that sells one product at a price $NC$ (in the notation of the authors, $NC$ is the net contribution to the company profits).    Assume for simplicity that customers cannot buy more than one unit per month from this shop.     Every month the company will spend $M$ in marketing for each customer unless its last purchase was 5 months ago or longer, when this happens the shop considers the relation with the customer finished.</p>
 <p>We will be characterizing customers in terms of states. In this case, customer states will be determined by the their recency, the number of months since their last purchase.     Lets consider a concrete case:  We have a new customer that purchases in january.   In february we will say that this customer has a recency $r=1$, as one month as passed.  On march, he will continue having recency $r=1$ if he bought again in february, otherwise he will have recency $r=2$.  If the customer has not bought anything by june, he will have recency $r=5$ by then and we will declare him inactive at that point.</p>
