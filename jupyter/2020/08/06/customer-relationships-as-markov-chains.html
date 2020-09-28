@@ -151,7 +151,9 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
 <li class="toc-entry toc-h1"><a href="# Introduction"> Introduction </a></li>
+<li class="toc-entry toc-h1"><a href="#Customer-Lifetime-Value">Customer Lifetime Value </a></li>
 <li class="toc-entry toc-h1"><a href="# Markov-Chains"> Markov Chains </a></li>
+<li class="toc-entry toc-h1"><a href="# Toy-model"> Toy model </a></li>
 <li class="toc-entry toc-h1"><a href="# General-Formulation"> General Formulation </a></li>
 <li class="toc-entry toc-h1"><a href="# Example"> Example </a></li>
 </ul><!--
@@ -185,7 +187,36 @@ window.onload = wrap_img;
 <p>On this note I want to explore the work presented in the article <a href="http://web.stanford.edu/class/msande121/Links/crmmodelingmarkov.pdf">"Modelling customer relationships as Markov Chains" from P. E. Pfeifer and R. L. Carraway (2000)</a>.</p>
 <p>Lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again.</p>
 <p>As the famous quote says "Half the money I spend on advertising is wasted; the trouble is I don't know which half." (John Wanamake). The purpose of the work analized here is to model the customer purchasing behavior in the scenario depicted above, with the objective of optimizing the direct marketing spend of the business.</p>
-<p>The authors start by presenting a simple toy scenario to illustrate their ideas.    I will present in the following this simple scenario, with some modifications that I think will help to make things more concrete.</p>
+<p>The authors start by presenting a simple toy scenario to illustrate their ideas.    I will present below this simple scenario, with some modifications to make things more concrete.   Before doing this, I will like to introduce briefly two concepts that we will be using: Customer Lifetime Value and Markov Chains.</p>
+<p>After presenting the toy model, we will discuss a general formulation of the model and we will discuss with a more realistic example.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Customer-Lifetime-Value">
+<a class="anchor" href="#Customer-Lifetime-Value" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customer Lifetime Value<a class="anchor-link" href="#Customer-Lifetime-Value"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id=" Markov-Chains">
+<a class="anchor" href="#%C2%A0Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a> Markov Chains<a class="anchor-link" href="#%C2%A0Markov-Chains"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id=" Toy-model">
+<a class="anchor" href="#%C2%A0Toy-model" aria-hidden="true"><span class="octicon octicon-link"></span></a> Toy model<a class="anchor-link" href="#%C2%A0Toy-model"> </a>
+</h1>
 <p>Consider a shop that sells one product at a price $NC$ (in the notation of the authors, $NC$ is the net contribution to the company profits).    Assume for simplicity that customers cannot buy more than one unit per month from this shop.     Every month the company will spend $M$ in marketing for each customer unless its last purchase was 5 months ago or longer, when this happens the shop considers the relation with the customer finished.</p>
 <p>We will be characterizing customers in terms of states. In this case, customer states will be determined by the their recency, the number of months since their last purchase.     Lets consider a concrete case:  We have a new customer that purchases in january.   In february we will say that this customer has a recency $r=1$, as one month as passed.  On march, he will continue having recency $r=1$ if he bought again in february, otherwise he will have recency $r=2$.  If the customer has not bought anything by june, he will have recency $r=5$ by then and we will declare him inactive at that point.</p>
 <p>In the toy scenario we analyze, we will assume that the probability that a customer will purchase again in a given month only depends on its recency.       Direct marketers have observed that recency plays a very important role in determining the probability that a customer will purchase again, so though we analyze a very simplified scenario it is not pointless.</p>
@@ -272,23 +303,6 @@ given that he started at recency $i$. Thats one of the nice things of the Markov
 \mathrm{LV} = [(1- \mathbf{P})^{-1}]_{1i} \, R_{i}
 \end{equation*}
 where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id=" Markov-Chains">
-<a class="anchor" href="#%C2%A0Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a> Markov Chains<a class="anchor-link" href="#%C2%A0Markov-Chains"> </a>
-</h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>absortive markov chain</p>
 
 </div>
 </div>
