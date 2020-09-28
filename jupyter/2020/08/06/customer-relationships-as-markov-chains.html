@@ -178,12 +178,6 @@ window.onload = wrap_img;
 <h1 id=" Introduction">
 <a class="anchor" href="#%C2%A0Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a> Introduction<a class="anchor-link" href="#%C2%A0Introduction"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>On this note I want to explore the work presented in the article <a href="http://web.stanford.edu/class/msande121/Links/crmmodelingmarkov.pdf">"Modelling customer relationships as Markov Chains" from P. E. Pfeifer and R. L. Carraway (2000)</a>.</p>
 <p>Lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again.</p>
 <p>As the famous quote says "Half the money I spend on advertising is wasted; the trouble is I don't know which half." (John Wanamake). The purpose of the work analized here is to model the customer purchasing behavior in the scenario depicted above, with the objective of optimizing the direct marketing spend of the business.</p>
@@ -199,12 +193,6 @@ window.onload = wrap_img;
 <h1 id="Customer-Lifetime-Value">
 <a class="anchor" href="#Customer-Lifetime-Value" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customer Lifetime Value<a class="anchor-link" href="#Customer-Lifetime-Value"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Customer Lifetime Value, which we will be referring to as Lifetime Value (LV), is a very important concept for marketing.    LV is a <strong>prediction</strong> of the profit attributed to the <strong>future</strong> relationship with a customer.</p>
 <p>This short definition tells us that LV is the expected future profit from a customer relationship and as such it needs to be a prediction, in other words it will depend on some model and assumptions.  Being a forward looking metric, its useful as it allows managers to focus on customer that will be more profitable in the long term.  LV can also be regarded as an upper limit on the cost-per-acquisition of new customers.</p>
 <p>Other definitions mention that LV represents the present value of the projected future cash flows attributed to a customer relationship, and by this they are taking into account the time-value of money.</p>
@@ -218,12 +206,6 @@ window.onload = wrap_img;
 <h1 id="Markov-Chains">
 <a class="anchor" href="#Markov-Chains" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markov Chains<a class="anchor-link" href="#Markov-Chains"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>When we observe a sequence of chance experiments, the probabilities for the outcomes of the next experiment can depend in general on all of the past outcomes.    For example this is the case when predicting the results of a series of horse races.    Here we focus on a special class of processes that present a simpler dependence between experiments.    Processes for which the outcome of a given experiment can only affect the outcome of the next experiment are known as Markov Chains.  This naming comes from A. A. Markov, who studied the mathematical properties of these processes.  An introduction to Markov Chains can be found on this book for example <em>Grinstead and Snell’s Introduction to Probability</em>.</p>
 <p>We specify a Markov Chain in terms of a set of states $S = \{s_1, s_2, \ldots s_n\}$.  The system will move among this states in discrete steps.   When the chain is in the state $s_i$, it will move to the state $s_j$ at the next step with a probability $p_{ij}$. We call $p_{ij}$ transition probabilities and they can be written in matrix form.</p>
 <p>Markov chains are also depicted usually in terms of a diagram, below we show a simple Markov chain</p>
@@ -344,23 +326,6 @@ where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gg</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -370,23 +335,6 @@ where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gg</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 </div>
 
 
