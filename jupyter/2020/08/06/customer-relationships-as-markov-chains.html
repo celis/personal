@@ -150,7 +150,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="# Introduction"> Introduction </a></li>
+<li class="toc-entry toc-h1"><a href="#Introduction">Introduction </a></li>
 <li class="toc-entry toc-h1"><a href="#Customer-Lifetime-Value">Customer Lifetime Value </a></li>
 <li class="toc-entry toc-h1"><a href="#Markov-Chains">Markov Chains </a></li>
 <li class="toc-entry toc-h1"><a href="#Toy-model">Toy model </a></li>
@@ -175,8 +175,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id=" Introduction">
-<a class="anchor" href="#%C2%A0Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a> Introduction<a class="anchor-link" href="#%C2%A0Introduction"> </a>
+<h1 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
 </h1>
 <p>On this note I want to explore the work presented in the article <a href="http://web.stanford.edu/class/msande121/Links/crmmodelingmarkov.pdf">"Modelling customer relationships as Markov Chains" from P. E. Pfeifer and R. L. Carraway (2000)</a>.</p>
 <p>Lets consider a business with non-contractual relations with their customers, it can be for instance a shop selling products.   The business spends money on direct marketing campaings that aim to make customers who have purchased previously purchase again.</p>
@@ -196,6 +196,7 @@ window.onload = wrap_img;
 <p>Customer Lifetime Value, which we will be referring to as Lifetime Value (LV), is a very important concept for marketing.    LV is a <strong>prediction</strong> of the profit attributed to the <strong>future</strong> relationship with a customer.</p>
 <p>This short definition tells us that LV is the expected future profit from a customer relationship and as such it needs to be a prediction, in other words it will depend on some model and assumptions.  Being a forward looking metric, its useful as it allows managers to focus on customer that will be more profitable in the long term.  LV can also be regarded as an upper limit on the cost-per-acquisition of new customers.</p>
 <p>Other definitions mention that LV represents the present value of the projected future cash flows attributed to a customer relationship, and by this they are taking into account the time-value of money.</p>
+<p>When modelling the LV we need to consider wether we are dealing with a contractual setting (for example a subscription based business model) or a non-contractual setting (like a shop delling items online).  The models used will differ considerably in both cases.</p>
 
 </div>
 </div>
@@ -281,6 +282,8 @@ where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</
 <h1 id=" General-Formulation">
 <a class="anchor" href="#%C2%A0General-Formulation" aria-hidden="true"><span class="octicon octicon-link"></span></a> General Formulation<a class="anchor-link" href="#%C2%A0General-Formulation"> </a>
 </h1>
+<p>In this section we will present a general model for customer relationships as Markov Chains.</p>
+
 </div>
 </div>
 </div>
@@ -290,6 +293,8 @@ where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</
 <h1 id=" Example">
 <a class="anchor" href="#%C2%A0Example" aria-hidden="true"><span class="octicon octicon-link"></span></a> Example<a class="anchor-link" href="#%C2%A0Example"> </a>
 </h1>
+<p>We will apply the general formulation developed previously to a concrete scenario.</p>
+
 </div>
 </div>
 </div>
