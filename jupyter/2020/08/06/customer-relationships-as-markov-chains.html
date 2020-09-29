@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      9 min read
     
 </span></p>
 
@@ -264,14 +264,27 @@ NC - M \\
 <p>With all the information we have so far, we can estimate the Lifetime Value (LV) of a customer $T$ months after its first purchase. Assume that we have a customer making its first purchase in a given month. The LV at $T$ months is then given by</p>
 \begin{equation*}
 \mathrm{LV} = [\sum_{t=0}^{T} \mathbf{P}^{\,t}]_{1i} \, R_{i}
-\end{equation*}<p>We can examine the first two terms.  The first term is simply $NC - M$ corresponding to the first purchase and the associated first marketing spenditure on that customer.  The second term is $(p_1) (NC - M )  - (1-p_1) M  $, which accounts for the two possible scenarios at this stage (he buys again or not).  This hopefully makes the previous formula more clear.   Note that $[\mathbf{P}^{\,t}]_{ij}$ is the probability that the customer will be at recency $j$ at the end of month $t$
+\end{equation*}<p>Here we use Einstein summation convention of contracted indices. We can examine the first two terms.  The first term is simply $NC - M$ corresponding to the first purchase and the associated first marketing spenditure on that customer.  The second term is $(p_1) (NC - M )  - (1-p_1) M  $, which accounts for the two possible scenarios at this stage (he buys again or not).  This hopefully makes the previous formula more clear.   Note that $[\mathbf{P}^{\,t}]_{ij}$ is the probability that the customer will be at recency $j$ at the end of month $t$
 given that he started at recency $i$. Thats one of the nice things of the Markov property, we can know what happens after several steps by simply taking powers of the one-step evolution matrix.</p>
 <p>Notice that in all the discussion I am not including the effects of the time-value of money as the authors do, as I dont think they are crucial for the dicussion and then I can deal with simpler formulas.</p>
-<p>We can take the previous formula for the LV and consider the limit $T \to \infty$.  In this case the formula becomes
+<p>We can take the previous formula for the LV and consider the limit $T \to \infty$.  In this case the formula becomes</p>
 \begin{equation*}
 \mathrm{LV} = [(1- \mathbf{P})^{-1}]_{1i} \, R_{i}
-\end{equation*}
-where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</p>
+\end{equation*}<p>where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.   In this case we have a Markov Chain with give states $\{ s_1, s_2, \ldots, s_5 \}$ with the different recency values.   The last state $r=5$ is known as an absortive state because it is impossible to leave it.  Furthermore we are dealing with an absortive Markov Chain because its possible to go from all states to the absortive state.   Absortive Markov Chains have some special properties we will be using next.</p>
+<p>Note that we can write our matrix $\mathbf{P}$ in block form as</p>
+\begin{equation*}
+\mathbf{P} = 
+\begin{pmatrix}
+Q_{4 \times 4}&amp; A_{4 \times 1}  \\
+0_{1 \times 4} &amp; 1
+\end{pmatrix}
+\end{equation*}<p>$Q$ encodes transition probabilities among transient states and $A$ represents absortive probabilities.  Taking also into account also that $R_{5} = 0$, we can write</p>
+\begin{equation*}
+\mathrm{LV} =  \sum_{i=1}^{4} [(1- \mathbf{Q})^{-1}]_{1i} \, R_{i}
+\end{equation*}<p>At this stage we can resort to the properties of absortive Markov Chains, which tell us that $1- \mathbf{Q}$ has an inverse given by</p>
+\begin{equation*}
+N \equiv (1 - Q)^{-1} =  1 + Q + Q^2 + \cdots
+\end{equation*}<p>$N$ is called the fundamental matrix of $\mathbf{P}$.  We also know that $\lim_{n \to \infty} Q^n  = 0$, meaning that the process will always be absorbed at some point.</p>
 
 </div>
 </div>
