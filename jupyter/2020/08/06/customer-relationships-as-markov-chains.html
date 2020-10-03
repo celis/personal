@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      11 min read
     
 </span></p>
 
@@ -316,7 +316,26 @@ Lets consider some specific values for the different model parameters: $NC= 40$,
 <h1 id=" General-Formulation">
 <a class="anchor" href="#%C2%A0General-Formulation" aria-hidden="true"><span class="octicon octicon-link"></span></a> General Formulation<a class="anchor-link" href="#%C2%A0General-Formulation"> </a>
 </h1>
-<p>In this section we will present a general model for customer relationships as Markov Chains.</p>
+<p>In this section we will present a general model for customer relationships as Markov Chains.    The paper by P. E. Pfeifer and R. L. Carraway presents different sample application of their ideas with increasing level of complexity, but doesnt present a common generic framework for their model.  Its very useful to have such general formulation in order to have a common language to formulate generic results that apply to all particular cases.   I will try to present such a formulation here.</p>
+<p>First, we will model the customer relationship with an absortive Markov Chain. There will be $r$ transient states and $t$ absortive states. That means we will have a transition matrix with the block form</p>
+\begin{equation*}
+\mathbf{P} = 
+\begin{pmatrix}
+Q_{t \times t}&amp; A_{t \times r } \\
+0_{r \times t } &amp; 1_{r \times r}
+\end{pmatrix}
+\end{equation*}<p>$Q$ stands for the probability of transition among the $r$ transient states and $A$ is the probability of transition to the $t$ absortive states.   We assume $r, t &gt; 0$.   Note that powers of this matrix keep the same block structure</p>
+\begin{equation*}
+\mathbf{P}^n = 
+\begin{pmatrix}
+    Q^n&amp; * \\
+0 &amp; 1
+\end{pmatrix}
+\end{equation*}<p>where $*$ is some non-null entry we dont write explicitly.     We will also have a vector summarizign the cash flows of each state.  This vector will be denoted by $R$ and will have $t+r$ dimensions.</p>
+<p>The absortive states will correspond to states where the customer is considered inactive or dead and no marketing spend is present, so the last $r$ entries of $R$ will be null.  The lifetime value is given by</p>
+\begin{equation*}
+\mathrm{LV} =  \sum_{i=1}^{t} N_{1i} \, R_{i}
+\end{equation*}<p>where $N \equiv (1 - Q)^{-1} =  1 + Q + Q^2 + \cdots$ is the fundamental matrix of $\mathbf{P}$.</p>
 
 </div>
 </div>
