@@ -270,7 +270,8 @@ given that he started at recency $i$. Thats one of the nice things of the Markov
 <p>We can take the previous formula for the LV and consider the limit $T \to \infty$.  In this case the formula becomes</p>
 \begin{equation*}
 \mathrm{LV} = [(1- \mathbf{P})^{-1}]_{1i} \, R_{i}
-\end{equation*}<p>where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.   In this case we have a Markov Chain with give states $\{ s_1, s_2, \ldots, s_5 \}$ with the different recency values.   The last state $r=5$ is known as an absortive state because it is impossible to leave it.  Furthermore we are dealing with an absortive Markov Chain because its possible to go from all states to the absortive state.   Absortive Markov Chains have some special properties we will be using next.</p>
+\end{equation*}<p>where we have used Taylor expansion for the inverse matrix of $1- \mathbf{P}$.</p>
+<p>We have a Markov Chain with five states $\{ s_1, s_2, \ldots, s_5 \}$ for the different recency values.   The last state $r=5$ is known as an absortive state because it is impossible to leave it.  Furthermore we are dealing with an absortive Markov Chain because its possible to go from all states to the absortive state.   Absortive Markov Chains have some special properties we will be using next.</p>
 <p>Note that we can write our matrix $\mathbf{P}$ in block form as</p>
 \begin{equation*}
 \mathbf{P} = 
@@ -285,6 +286,8 @@ Q_{4 \times 4}&amp; A_{4 \times 1}  \\
 \begin{equation*}
 N \equiv (1 - Q)^{-1} =  1 + Q + Q^2 + \cdots
 \end{equation*}<p>$N$ is called the fundamental matrix of $\mathbf{P}$.  We also know that $\lim_{n \to \infty} Q^n  = 0$, meaning that the process will always be absorbed at some point.</p>
+<p>Having a model of the customer LV, we can optimize the marketing campaign according to this value.<br>
+Lets consider some specific values for the different model parameters: $NC= 40$, $M=4$.  lets also consider a situation where we observe $p_1=0.3$, $p_2=0.2$, $p_3=0.15$, $p_4=0.05$.   In this case we obtain $\mathrm{LV} = 64.25$.   Now, lets imagine the firm tries a different approach where they close the relation with the customers a t $r \geq 4$ (this implies $R_4 = 0$), and this has the effect of decreasing $p_4$ down to $0.01$.    In this case we get $\mathrm{LV} = 65.7$.   So we see how we can choose among different marketing campaign settings by optimizing on the LV.</p>
 
 </div>
 </div>
